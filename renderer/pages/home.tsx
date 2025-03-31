@@ -1,6 +1,8 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 
+import tebex from "@tebexio/tebex.js";
+
 function RockyMountainHigh() {
   // source https://codepen.io/kendallstrautman/pen/agOZWP
   return (
@@ -22,6 +24,13 @@ function RockyMountainHigh() {
   );
 }
 
+const handleClick = () => {
+  tebex.checkout.init({
+    ident: "cgg4rs-69b3246edafe4810563d2628d642d0ab71c36e2f",
+  });
+  tebex.checkout.launch();
+};
+
 const Home: NextPage = () => {
   return (
     <div className="bg-slate-800 text-white">
@@ -36,6 +45,7 @@ const Home: NextPage = () => {
       <main className="w-screen h-screen flex flex-col justify-center items-center">
         <div className="text-4xl">Electron Next.js Starter App</div>
         <RockyMountainHigh />
+        <button onClick={ handleClick }>click me</button>
       </main>
       <footer className="flex items-center ml-60 h-screen-1/12"></footer>
     </div>
